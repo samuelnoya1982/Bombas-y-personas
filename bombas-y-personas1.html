@@ -4,3 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calendario Cultural Chaco</title>
+</head>
+<body>
+    
+from scipy.spatial import distance 
+import numpy as np
+
+n = int(input("ingresa la cantidad de bombas que habrá: \n"))
+m = int(input("ingresa la cantidad de personas que estarán paradas: \n"))
+radio = int(input("ingresa el radio mínimo al que deben estar para salvarse: \n")) 
+
+array1 = np.random.randint(-10,10, size = (n,2))
+array2 = np.random.randint(-10,10, size = (m,2))
+j = 0
+i = 0
+for el in range(len(array1)):
+  k = 0
+  
+  while k < len(array2):
+    distancia = distance.euclidean(array1[el],array2[k])
+    print(f" La distancia entre {array1[el]} y {array2[k]} es {distancia}")
+    k += 1
+    if distancia < radio:
+      print("Peligro")
+      i += 1
+    j += 1
+   
+print(f"La cantidad de distancias calculadas es {j}")
+print(f"La cantidad de personas en peligro es {i}")
+    
+</body>
+</html>
